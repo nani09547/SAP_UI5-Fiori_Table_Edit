@@ -1,0 +1,69 @@
+<mvc:View controllerName="ETM.Testapp.controller.Main" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:uxap="sap.uxap" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form" xmlns:f="sap.f" xmlns:l="sap.ui.layout" xmlns:filterbar="sap.ui.comp.smartfilterbar"
+	xmlns:smartField="sap.ui.comp.smartfield"
+	xmlns:customdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" height="100%">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="sampel app to test the trails">
+					<content>
+						
+						<filterbar:SmartFilterBar id="sfbId" entitySet="ReqNoteItemsSet">
+							<filterbar:controlConfiguration>
+								<filterbar:ControlConfiguration key="RequisitionNote" visibleInAdvancedArea="true" hasValueHelpDialog="true" mandatory="mandatory"
+									preventInitialDataFetchInValueHelpDialog="false" hasTypeAhead="true" displayBehaviour="idAndDescription"/>
+							</filterbar:controlConfiguration>
+						</filterbar:SmartFilterBar>
+						<Label text="Sample data for testing"/>
+						<Text text="1000001752"></Text>
+						<smartTable:SmartTable id="sTPLItemId" smartFilterId="sfbId" useTablePersonalisation="false" demandPopin="true" entitySet="ReqNoteItemsSet" header="Items"
+								showRowCount="true" enableAutoBinding="false" useExportToExcel="false" tableType="ResponsiveTable" beforeRebindTable="onBRTAllItems"
+								initiallyVisibleFields="RequisitionNote,RequisitionnoteItem,Shippingdocnumber">
+							<Table id="tableReqId" sticky="ColumnHeaders">
+								<headerToolbar>
+								<OverflowToolbar>
+									<ToolbarSpacer />
+									<Button id="tabEditId" text="Edit" icon="sap-icon://edit" tooltip="Edit" press="onTabEdit"/>
+								</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column>
+										<customData>
+												<core:CustomData key="p13nData"
+													value="\{&quot;columnKey&quot;: &quot;RequisitionNote&quot;, &quot;columnIndex&quot;:&quot;0&quot;, &quot;leadingProperty&quot;: &quot;RequisitionNote&quot;}"/>
+											</customData>
+											<Text text=""/>
+									</Column>
+									<Column hAlign="Center" vAlign="Middle">
+										<customData>
+												<core:CustomData key="p13nData"
+													value="\{&quot;columnKey&quot;: &quot;RequisitionnoteItem&quot;, &quot;columnIndex&quot;:&quot;1&quot;, &quot;leadingProperty&quot;: &quot;RequisitionnoteItem&quot;}"/>
+											</customData>
+											<Text text=""/>
+									</Column>
+									<Column hAlign="Center" vAlign="Middle">
+										<customData>
+												<core:CustomData key="p13nData"
+													value="\{&quot;columnKey&quot;: &quot;Shippingdocnumber&quot;, &quot;columnIndex&quot;:&quot;2&quot;, &quot;leadingProperty&quot;: &quot;Shippingdocnumber&quot;}"/>
+											</customData>
+											<Text text=""/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Input value="{RequisitionNote}" editable="{ViewModel>/rEdit}" />
+											<Input value="{RequisitionnoteItem}" editable="{ViewModel>/rEdit}" />
+											<Input value="{Shippingdocnumber}" editable="{ViewModel>/rEdit}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</smartTable:SmartTable>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

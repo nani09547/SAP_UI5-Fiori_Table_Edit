@@ -1,0 +1,32 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/sap/opu/odata/sap/ZETM_LOGISTIC_SRV_01/$metadata"/>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<Annotations Target="ZETM_LOGISTIC_SRV_01.ReqNoteItems/RequisitionNote" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Requisitions"/>
+						<PropertyValue Property="CollectionPath" String="RequisitionF4helpSet"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+						<PropertyValue Property="Property" PropertyPath="DisplayView"/>
+						<PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="RequisitionNote"/>
+									<PropertyValue Property="ValueListProperty" String="RequisitionNote"/>
+									<PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+								</Record>
+								<Record
+									Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty"
+										String="ReqDesc"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,85 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZETM_LOGISTIC_SRV_01" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Sub. ID" sap:creatable="false" sap:updatable="false"
+					sap:filterable="false"/><Property Name="user" Type="Edm.String" MaxLength="12" m:FC_TargetPath="SyndicationAuthorName" m:FC_KeepInContent="false"
+					sap:label="User Name" sap:creatable="false" sap:filterable="false"/><Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false"
+					sap:label="Time Stamp" sap:creatable="false" sap:filterable="false"/><Property Name="title" Type="Edm.String" MaxLength="255" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Title"
+					sap:filterable="false"/><Property Name="deliveryAddress" Type="Edm.String" sap:label="Delivery Address" sap:filterable="false"/><Property Name="persistNotifications" Type="Edm.Boolean" sap:label="Persist Notification" sap:filterable="false"/><Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:filterable="false"/><Property Name="filter" Type="Edm.String" sap:label="Filter" sap:filterable="false"/><Property Name="select" Type="Edm.String" MaxLength="255" sap:label="Select" sap:filterable="false"/><Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/></EntityType>
+			<EntityType Name="Notification" sap:semantics="notifications" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Notification ID"/><Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection"/><Property Name="title" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Notif. Text"/><Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false"
+					sap:label="Time Stamp"/><Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/><Property Name="entriesOfInterest" Type="Edm.Int32" sap:label="No. of Entries"/><Property Name="recipient" Type="Edm.String" MaxLength="112" sap:label="Recipient" sap:creatable="false" sap:updatable="false"/></EntityType>
+			<EntityType Name="ReqNoteItems" sap:content-version="1">
+				<Key><PropertyRef Name="RequisitionNote"/><PropertyRef Name="RequisitionnoteItem"/><PropertyRef Name="Shippingdocnumber"/></Key><Property Name="RequisitionNote" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Requisition Note"
+					sap:creatable="false" sap:updatable="false"/><Property Name="RequisitionnoteItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Item"
+					sap:creatable="false" sap:updatable="false" sap:filterable="false"/><Property Name="Shippingdocnumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Document Number"
+					sap:creatable="false" sap:updatable="false"/><Property Name="Shippingdoctype" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Document type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Plant" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Plant" sap:creatable="false" sap:updatable="false"
+					sap:filterable="false"/><Property Name="Plantname" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Plant Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Material" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false"
+					sap:updatable="false" sap:filterable="false"/><Property Name="Materialdescription" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Material Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Uom" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="Hscode" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="HS Code" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="RequisitionF4help" sap:content-version="1">
+				<Key><PropertyRef Name="RequisitionNote"/></Key><Property Name="RequisitionNote" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Document number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReqDesc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Document number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ShipmentData" sap:content-version="1">
+				<Key><PropertyRef Name="ShipmentDoc"/></Key><Property Name="ShipmentDoc" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Shipment Document" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ShipDate" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="ShipmentDate" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PackingListNo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Packing List Number" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ExportRef" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Export Ref" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SalesOrder" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Sales Order" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PaymentTerms" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Payment Terms" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="MOT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Mode of Transport" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Incoterm" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="incoterm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ShipmentType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Shipment Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Country" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Country" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ShipFrom" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Ship From Country" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PriceToggle" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Price Toggle" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BOMToggle" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="BOM Toggle" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="HSCodeToggle" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="HS Toggle" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EName1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Exporter Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EStreet1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Exporter Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EStreet2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Exporter Street2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EContact" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Exporter Contact" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ETel" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Exporter Tel" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EEmail" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Exporter Email" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ETaxID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Exporter Tax Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IName1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Importer Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IStreet1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Importer Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IStreet2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Importer Street2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IContact" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Importer Contact" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ITel" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Importer Tel" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IEmail" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Importer Email" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ITaxID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Importer Tax Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PName1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PickUp Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PStreet1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PickUp Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PStreet2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PickUp Street2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PContact" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PickUp Contact" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PTel" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PickUp Tel" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PEmail" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PickUp Email" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PTaxID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="PickUp Tax Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DName1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Delivery Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DStreet1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Delivery Street" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DStreet2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Delivery Street2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DContact" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Delivery Contact" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DTel" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Delivery Tel" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DEmail" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Delivery Email" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DTaxID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Delivery Tax Id" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Remarks" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Remarks" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SpecialRemarks" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Special Remarks" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AddRemarks" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Additional Remarks" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Disclaimer" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Disclaimer" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZETM_LOGISTIC_SRV_01_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="SubscriptionCollection" EntityType="ZETM_LOGISTIC_SRV_01.Subscription" sap:content-version="1"/><EntitySet Name="NotificationCollection" EntityType="ZETM_LOGISTIC_SRV_01.Notification" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ReqNoteItemsSet" EntityType="ZETM_LOGISTIC_SRV_01.ReqNoteItems" sap:creatable="false" sap:deletable="false"
+				sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/><EntitySet Name="RequisitionF4helpSet" EntityType="ZETM_LOGISTIC_SRV_01.RequisitionF4help" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ShipmentDataSet" EntityType="ZETM_LOGISTIC_SRV_01.ShipmentData" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZETM_LOGISTIC_SRV_01/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZETM_LOGISTIC_SRV_01/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
